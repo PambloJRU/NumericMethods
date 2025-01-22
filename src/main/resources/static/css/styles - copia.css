@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #e6b3c7;
+    display: grid;
+    place-content: center;
+}
+
+.title {
+    color: #000000;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #d721bf;
+    color: white;
+    cursor: pointer;
+    
+}
+
+button:hover {
+    background-color: #ffbebe;
+}
+
+
+img{
+
+    display: none;
+    margin-top: 20px;
+    max-width: 100%;
+    place-content: center;
+    /*width: 700px;
+    height: 500px;
+    */
+
+}

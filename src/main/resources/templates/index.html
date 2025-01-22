@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Métodos Numéricos</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+    <div class="description">
+        <h2>Bienvenido a la Calculadora de Métodos Numéricos</h2>
+        <p>Seleccione uno de los métodos disponibles para encontrar raíces de funciones:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li><strong>Métodos cerrados</strong> Bisección y Regla Falsa.</li>
+            <li><strong>Método abiertos:</strong> Newton-Raphson y Secante.</li>
+
+        </ul>
+    </div>
+
+    <section class="nav-menu">
+        <h1>Métodos Numericos</h1>
+        <nav>
+            <a href="/newton">Newton-Raphson</a>
+            <a href="/bisection">Bisección</a>
+			<a href="/falserule">Regla Falsa</a>
+            <a href="/secant">Secante</a>        
+        </nav>
+    </section>
+    
+
+</body>
+</html>
