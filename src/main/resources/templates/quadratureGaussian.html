@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Integracion Numerica con Cuadraturas Gaussianas</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <!--<link rel="stylesheet" type="text/css" href="C:\Users\Usuario\eclipse-workspace\NumericMethodsTry2\src\main\resources\static\css">-->
+    <script type="text/javascript" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+
+    async function fetchRandomImage() {
+        try {
+            // Configura los headers necesarios para la autenticación
+            const headers = new Headers({
+            'Accept': 'application/json',
+            // Si tienes credenciales de API, agrégalas aquí
+            // 'Authorization': 'Basic ' + btoa('username:api_key')
+         });
+
+            const response = await fetch("https://danbooru.donmai.us/posts/random.json?tags=honkai:_star_rail", {
+                //"is:sfw" cat_girl
+                //"+rating:safe"
+            method: 'GET',
+            headers: headers,
+            credentials: 'omit' // o 'include' si tienes credenciales
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const imageUrl = data.file_url;
+                if (imageUrl) {
+                    const imageElement = document.getElementById("random-image");
+                    imageElement.src = imageUrl;
+                    imageElement.style.display = "block";
+                
+                    // Espera un momento para asegurarse de que la imagen se muestre
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+        
+        } catch (error) {
+        console.error("Error:", error);
+        alert("Error al cargar la imagen: " + error.message);
+    }
+    }
+    </script>
+
+</head>
+<body>
+
+    <h1>Cuadratura Gaussiana</h1>
+	<section class="nav-index">
+	     <nav>
+	         <a href="/">Volver</a>
+	     </nav>
+	 </section>
+    
+
+    <div class="example-functions">
+        <h3>Digita una integral y luego selecciona los limites de integración</h3>
+        <ul>
+            <li> <span th:utext="'$$\int_{a}^{b} x^2 - 4 dx$$'"></span></li>
+            <li> <span th:utext="'$$\int_{a}^{b} sen(x) dx$$'"></span> </li>
+			<li> <span th:utext="'$$\int_{a}^{b} \frac{x+3}{e^x} dx$$'"></span> </li>
+        </ul>
+        <h3>Selecciona los limites de integración</h3>
+    </div>
+
+     <form action="/quadratureGaussian" method="post">
+
+        <label for="function">Función:</label>
+        <input type="text" id="function" name="function" placeholder="Ejemplo: x^2-4" required><br><br>
+
+        <label for="startPoint">Limite inferior:</label>
+        <input type="number" step="any" id="a" name="a" required><br><br>
+
+        <label for="endPoint">Limite superior:</label>
+        <input type="number" step="any" id="b" name="b" required><br><br>
+
+        <button type="submit">Calcular integral</button>
+		
+    </form>
+
+    <div th:if="${result != null}">
+        <h2>Resultado:</h2>
+        <p>La raíz calculada es: <span th:text="${result}"></span></p>
+        <!-- se muestra la funcion ingresada -->
+        <p>Función ingresada: <span th:utext="'$$' + ${function} + '$$'"></span> </p>
+        <p>Entre:<span th:text="${a}"></span> y <span th:text="${b}"></span></p>
+        
+        <script>
+            // Cargar la imagen cuando se muestren los resultados
+            fetchRandomImage();
+
+        </script>
+		
+    </div>
+
+    <div th:if="${error != null}">
+        <h2>Error:</h2>
+        <p th:text="${error}"></p>
+	</div>	
+
+    <div>
+ 
+        <h2>Mona china gratis:</h2>
+        <img id="random-image" alt="Imagen aleatoria de Danbooru">
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            MathJax.typeset(); // Esto hace que MathJax procese las ecuaciones que hayan sido cargadas
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>   
+
+</body>
+</html>

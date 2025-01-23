@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.numericTr2.calculator.methods.BisectionMethod;
 import com.numericTr2.calculator.methods.FalseRuleMethod;
+import com.numericTr2.calculator.methods.GaussianQuadrature;
 import com.numericTr2.calculator.methods.NewtonRaphsonMethod;
 import com.numericTr2.calculator.methods.SecantMethod;
 
@@ -40,6 +41,11 @@ public class NewtonRaphsonController {
 	@GetMapping("/secant")
 	public String showSecantForm() {
 		return "secant";
+	}
+	
+	@GetMapping("/quadratureGaussian")
+	public String showGaussianForm() {
+		return "quadratureGaussian";
 	}
 	
 
@@ -155,6 +161,27 @@ public class NewtonRaphsonController {
 
 	}
 		return "secant";
+	}
+	
+	@PostMapping("/quadratureGaussian")
+    public String calculateGaussian(
+			@RequestParam String function, @RequestParam double a, @RequestParam double b, Model model) {
+			System.out.println("function: "+function);
+		try {
+			double result;
+			
+			GaussianQuadrature method = new GaussianQuadrature();
+			result = method.fourthPounds(function, a, b);
+
+			model.addAttribute("result", result);
+			model.addAttribute("function", function);
+			model.addAttribute("a", a);
+			model.addAttribute("b", b);
+		} catch (Exception e) {
+			model.addAttribute("error", "Hubo un error al calcular: " + e.getMessage());
+		}
+
+		return "quadratureGaussian";
 	}
 
 	
