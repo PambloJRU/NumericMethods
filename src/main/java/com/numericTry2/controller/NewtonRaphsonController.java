@@ -12,6 +12,7 @@ import com.numericTr2.calculator.methods.FalseRuleMethod;
 import com.numericTr2.calculator.methods.GaussianQuadrature;
 import com.numericTr2.calculator.methods.NewtonRaphsonMethod;
 import com.numericTr2.calculator.methods.SecantMethod;
+import com.numericTr2.models.NewtonRaphsonResult;
 
 
 //import com.MetodosNumericos.calculator.methods.NewtonRaphsonMethod;
@@ -57,13 +58,13 @@ public class NewtonRaphsonController {
 	        
 	        try {
 	        	int intStartPoint = (int) startPoint;
-	        	NewtonRaphsonMethod method = new NewtonRaphsonMethod();
-		        double result;
-	            result = method.newthonRpMethod(function, startPoint);
+
+		        NewtonRaphsonMethod method = new NewtonRaphsonMethod();
+		        NewtonRaphsonResult result = method.newthonRpMethod(function, startPoint);
+	           
 	            
-	            
-	            
-	            model.addAttribute("result", result);
+	            model.addAttribute("result", result.getRoot());
+	            model.addAttribute("iterations", result.getIterations());
 		        model.addAttribute("function", function);
 		        model.addAttribute("startPoint", intStartPoint);	        
 	        } catch (Exception e) {

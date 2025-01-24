@@ -54,7 +54,8 @@ public class GaussianQuadrature {
     }
  
  
- public double fourthPounds(String function, double a, double b){
+ @SuppressWarnings("deprecation")
+public double fourthPounds(String function, double a, double b){
      
      double w1=0.347854845137;
      double w2=0.652145154862;

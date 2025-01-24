@@ -1,11 +1,18 @@
 package com.numericTr2.calculator.methods;
 
+import java.util.ArrayList;
+
 import org.matheclipse.core.eval.EvalUtilities;
 
 
 public class BisectionMethod {
+	
+	
 
-	public BisectionMethod() {}
+
+	public BisectionMethod() {
+		
+	}
 	
 	public double bisectionMethods(String function,double A, double B) {
 		

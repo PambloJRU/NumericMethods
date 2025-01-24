@@ -85,6 +85,25 @@
         <!-- se muestra la funcion ingresada -->
         <p>Función ingresada: <span th:utext="'$$' + ${function} + '$$'"></span> </p>
         <p>Punto inicial: <span th:text="${startPoint}"></span></p>
+		
+		<table class="table" th:if="${iterations != null and !iterations.empty}">
+		    <thead>
+		        <tr>
+		            <th>Iteración</th>
+		            <th>Aproximación (xr)</th>
+		            <th>f(xr)</th>
+		            <th>f'(xr)</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="iter : ${iterations}">
+		            <td th:text="${iter.iteration}"></td>
+		            <td th:text="${#numbers.formatDecimal(iter.xr, 0, 5)}"></td>
+		            <td th:text="${#numbers.formatDecimal(iter.fxr, 0, 5)}"></td>
+		            <td th:text="${#numbers.formatDecimal(iter.fprimeXr, 0, 5)}"></td>
+		        </tr>
+		    </tbody>
+		</table>
 
         <script>
             // Cargar la imagen cuando se muestren los resultados
