@@ -1,13 +1,23 @@
 package com.numericTr2.calculator.methods;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.matheclipse.core.eval.EvalUtilities;
 
-public class FalseRuleMethod {
+import com.numericTr2.models.FalseRuleIteration;
 
-	public double falseRuleMethod(String function,double A, double B) {
+
+public class FalseRuleMethod {
+	
+	private double root;
+
+	public List<FalseRuleIteration> falseRuleMethod(String function,double A, double B) {
 		
 	    double tolerance = 1e-8;
 	    int maxIterations = 100;
+	    
+	    List<FalseRuleIteration> iterations = new ArrayList<>();
 		
         EvalUtilities util = new EvalUtilities(false, true);
         
@@ -30,6 +40,8 @@ public class FalseRuleMethod {
         xr = xu - (fxu * (xi - xu) / (fxi - fxu));
             
         fxr = evaluateFunction(function, xr, util); 
+        
+        iterations.add(new FalseRuleIteration(i, xi, xu, xr, fxr, fxi, fxu));
         	
         	System.out.println(i);
         if (Math.abs(fxr) < tolerance || Math.abs(xu - xi) < tolerance) {
@@ -45,7 +57,9 @@ public class FalseRuleMethod {
             fxi = fxr;
         }
       }  
-        return xr;
+        
+        root = xr;
+        return iterations;
 	}
 	
 	private double evaluateFunction(String function, double x, EvalUtilities util) {
@@ -55,6 +69,10 @@ public class FalseRuleMethod {
 	    } catch (Exception e) {
 	        throw new RuntimeException("Error al evaluar la función en x = " + x, e);
 	    }
+	}
+	
+	public double getRoot() {
+		return root;
 	}
 	
 	

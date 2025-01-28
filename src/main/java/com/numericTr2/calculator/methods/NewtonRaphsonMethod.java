@@ -2,17 +2,17 @@ package com.numericTr2.calculator.methods;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.matheclipse.core.eval.EvalUtilities;
 import org.matheclipse.core.interfaces.IExpr;
-
 import com.numericTr2.models.NewtonRaphsonIteration;
-import com.numericTr2.models.NewtonRaphsonResult;
+
 public class NewtonRaphsonMethod {
+	
+	private double root=0;
 
     public NewtonRaphsonMethod() {}
 
-    public NewtonRaphsonResult newthonRpMethod(String function, double startPoint) {
+    public List<NewtonRaphsonIteration> newthonRpMethod(String function, double startPoint) {
     	
         EvalUtilities util = new EvalUtilities(false, true);
         double tolerance = 1e-11;
@@ -48,7 +48,13 @@ public class NewtonRaphsonMethod {
             double xiPlusOne = xi - f_xi / fder_xi;
             xi = xiPlusOne;
         }
+        
+        root = xi;
 
-        return new NewtonRaphsonResult(xi, iterations);
+        return iterations;
     }
+    
+	public double getRoot() {
+		return root;
+	}
 }

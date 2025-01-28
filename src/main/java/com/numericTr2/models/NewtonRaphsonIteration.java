@@ -9,6 +9,7 @@ public class NewtonRaphsonIteration {
     private double fprimeXr;
 
 
+
     public NewtonRaphsonIteration(int iteration, double xr, double fxr, double fprimeXr) {
         this.iteration = iteration;
         this.xr = xr;
@@ -21,4 +22,5 @@ public class NewtonRaphsonIteration {
     public double getXr() { return xr; }
     public double getFxr() { return fxr; }
     public double getFprimeXr() { return fprimeXr; }
+
 }

@@ -138,3 +138,18 @@ img{
     padding: 20px;
     text-align: center;
 }
+
+.table {
+   border-collapse: collapse;
+   width: 100%;
+   background-color: #ff9ff7;
+   
+   
+}
+
+tr:hover {background-color: gray;}
+
+td {
+
+  text-align: center;
+}

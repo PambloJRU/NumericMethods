@@ -1,5 +1,7 @@
 package com.numericTry2.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,12 @@ import com.numericTr2.calculator.methods.FalseRuleMethod;
 import com.numericTr2.calculator.methods.GaussianQuadrature;
 import com.numericTr2.calculator.methods.NewtonRaphsonMethod;
 import com.numericTr2.calculator.methods.SecantMethod;
-import com.numericTr2.models.NewtonRaphsonResult;
+import com.numericTr2.models.FalseRuleIteration;
+import com.numericTr2.models.NewtonRaphsonIteration;
 
 
-//import com.MetodosNumericos.calculator.methods.NewtonRaphsonMethod;
+
+
 @Controller
 public class NewtonRaphsonController {
 	
@@ -55,16 +59,14 @@ public class NewtonRaphsonController {
 	            @RequestParam String function,
 	            @RequestParam double startPoint,
 	            Model model) {
-	        
 	        try {
 	        	int intStartPoint = (int) startPoint;
 
 		        NewtonRaphsonMethod method = new NewtonRaphsonMethod();
-		        NewtonRaphsonResult result = method.newthonRpMethod(function, startPoint);
+		        List<NewtonRaphsonIteration> iterations = method.newthonRpMethod(function, startPoint);
 	           
-	            
-	            model.addAttribute("result", result.getRoot());
-	            model.addAttribute("iterations", result.getIterations());
+	            model.addAttribute("result", method.getRoot()); 
+	            model.addAttribute("iterations", iterations);
 		        model.addAttribute("function", function);
 		        model.addAttribute("startPoint", intStartPoint);	        
 	        } catch (Exception e) {
@@ -107,12 +109,12 @@ public class NewtonRaphsonController {
 		try {
 			int intStartPoint = (int) startPoint;
 			int intEndPoint = (int) endPoint;
-
 			double result;
-
+	
 			FalseRuleMethod method = new FalseRuleMethod();
+			List<FalseRuleIteration> iterations = method.falseRuleMethod(function, startPoint, endPoint);
+			result = method.getRoot();
 
-			result = method.falseRuleMethod(function, startPoint, endPoint);
 
 			if (startPoint > endPoint || startPoint == endPoint) {
 				model.addAttribute("error", "No cumple el teorema de convergencia");
@@ -123,6 +125,7 @@ public class NewtonRaphsonController {
 			model.addAttribute("function", function);
 			model.addAttribute("startPoint", intStartPoint);
 			model.addAttribute("endPoint", intEndPoint);
+			model.addAttribute("iterations", iterations);
 		} catch (Exception e) {
 			model.addAttribute("error", "Hubo un error al calcular: " + e.getMessage());
 
