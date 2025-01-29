@@ -7,9 +7,6 @@ import org.matheclipse.core.eval.EvalUtilities;
 
 public class BisectionMethod {
 	
-	
-
-
 	public BisectionMethod() {
 		
 	}

@@ -12,7 +12,7 @@ public class FalseRuleMethod {
 	
 	private double root;
 
-	public List<FalseRuleIteration> falseRuleMethod(String function,double A, double B) {
+	public List<FalseRuleIteration> falseRuleMethod(String function,double A, double B){
 		
 	    double tolerance = 1e-8;
 	    int maxIterations = 100;
@@ -28,9 +28,12 @@ public class FalseRuleMethod {
         double fxi= evaluateFunction(function, xi, util);
         double fxu= evaluateFunction(function, xu, util);
         
+        System.out.println(fxi);
+        System.out.println(fxu);
+        System.out.println(function);
         //Prubea de logica en java, si me da pereza, toca hacerlo en javascript :V
         if (fxi * fxu >= 0) {
-            throw new IllegalArgumentException("No cumple el teorema de biseccion");
+            throw new IllegalArgumentException("No cumple el teorema de fxi*fxu>= 0");
         }
         
         double fxr;
@@ -64,6 +67,7 @@ public class FalseRuleMethod {
 	
 	private double evaluateFunction(String function, double x, EvalUtilities util) {
 	    String evalFunction = function.replace("x", String.valueOf(x));
+	    
 	    try {
 	        return Double.parseDouble(util.evaluate(evalFunction).toString().replace("*10^", "E"));
 	    } catch (Exception e) {

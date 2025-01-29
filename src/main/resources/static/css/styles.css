@@ -147,9 +147,15 @@ img{
    
 }
 
-tr:hover {background-color: gray;}
+th{
+
+    background-color:#c82eda
+ 
+}
+
+tr:hover {background-color: #bd60ec;}
 
 td {
-
+  border: 2px solid #ff72c1;
   text-align: center;
 }

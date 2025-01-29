@@ -94,23 +94,23 @@
 		    <thead>
 		        <tr>
 		            <th>Iteración</th>
-		            <th>Aproximación (xr)</th>
 		            <th>xi</th>
+		            <th>xr</th>
 		            <th>xu</th>
 				    <th>f(xi)</th>
-					<th>f(xu)</th>
 					<th>f(xr)</th>
+					<th>f(xu)</th>
 		        </tr>
 		    </thead>
 		    <tbody>
 		        <tr th:each="iter : ${iterations}">
 		            <td th:text="${iter.iteration}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.xi, 1, 15)}"></td> 
-					<td th:text="${#numbers.formatDecimal(iter.xu, 1, 15)}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.xr, 1,15)}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.fxr, 1,15)}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.fxi, 1,15)}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.fxu, 1,15)}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.xi, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td> 
+					<td th:text="${#numbers.formatDecimal(iter.xr, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.xu, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.fxi, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.fxr, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.fxu, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
 		        </tr>
 		    </tbody>
 		</table>
