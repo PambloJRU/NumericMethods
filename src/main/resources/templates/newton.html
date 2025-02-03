@@ -98,9 +98,9 @@
 		    <tbody>
 		        <tr th:each="iter : ${iterations}">
 		            <td th:text="${iter.iteration}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.xr, 1, 15)}"></td> 
-					<td th:text="${#numbers.formatDecimal(iter.fxr, 1, 15)}"></td>
-					<td th:text="${#numbers.formatDecimal(iter.fprimeXr, 1,15)}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.xr, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td> 
+					<td th:text="${#numbers.formatDecimal(iter.fxr, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iter.fprimeXr, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
 		        </tr>
 		    </tbody>
 		</table>

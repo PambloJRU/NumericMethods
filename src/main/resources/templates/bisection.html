@@ -92,6 +92,27 @@
         <p>Función ingresada: <span th:utext="'$$' + ${function} + '$$'"></span> </p>
         <p>Entre:<span th:text="${startPoint}"></span> y <span th:text="${endPoint}"></span></p>
         
+	<table class="table" th:if="${iterations != null and !iterations.empty}">
+		<thead>
+			<tr>
+				<th>Iteración</th>
+				<th>xi</th>
+				<th>xr</th>
+	            <th>xu</th>
+			</tr>
+		 </thead>
+		 <tbody>
+			
+			<tr th:each="iter : ${iterations}">	
+				<td th:text="${iter.iteration}"></td>
+				<td th:text="${iter.xi}"></td>
+				<td th:text="${iter.xr}"></td>
+				<td th:text="${iter.xu}"></td>
+			</tr>
+		  </tbody>
+	 </table>
+			
+			
         <script>
             // Cargar la imagen cuando se muestren los resultados
             fetchRandomImage();

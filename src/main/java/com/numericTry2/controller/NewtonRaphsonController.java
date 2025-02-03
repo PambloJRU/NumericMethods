@@ -14,8 +14,10 @@ import com.numericTr2.calculator.methods.FalseRuleMethod;
 import com.numericTr2.calculator.methods.GaussianQuadrature;
 import com.numericTr2.calculator.methods.NewtonRaphsonMethod;
 import com.numericTr2.calculator.methods.SecantMethod;
+import com.numericTr2.models.BisectionIteration;
 import com.numericTr2.models.FalseRuleIteration;
 import com.numericTr2.models.NewtonRaphsonIteration;
+import com.numericTr2.models.SecantIteration;
 
 
 
@@ -82,18 +84,17 @@ public class NewtonRaphsonController {
 				int intStartPoint = (int) startPoint;
 				int intEndPoint = (int) endPoint;
 				
-				double result;
-				
 				BisectionMethod method = new BisectionMethod();
+				List<BisectionIteration> iterations = method.BisectionMethods(function, startPoint, endPoint);
 				
-				result = method.bisectionMethods(function, startPoint, endPoint);
+				double result = method.getRoot();
 				
 				if (startPoint > endPoint|| startPoint == endPoint ) {
 					model.addAttribute("error", "No cumple el teorema de bisección");
 				} else {
 					model.addAttribute("result", result);
 				}
-				
+				model.addAttribute("iterations", iterations);
 				model.addAttribute("function", function);
 				model.addAttribute("startPoint", intStartPoint);
 				model.addAttribute("endPoint", intEndPoint);
@@ -147,14 +148,16 @@ public class NewtonRaphsonController {
 			
 			double result;
 			SecantMethod method = new SecantMethod();
+			List<SecantIteration> iterations = method.secantMethod(function, startPoint, endPoint);
 			
-			result = method.secantMethod(function, startPoint, endPoint);
+			result = method.getRoot();
 			if (startPoint > endPoint || startPoint == endPoint) {
 				model.addAttribute("error", "No cumple el teorema de convergencia");
 			} else {
 				model.addAttribute("result", result);
 			}
 			
+			model.addAttribute("iterations", iterations);
 			model.addAttribute("function", function);
 			model.addAttribute("startPoint",intStartPoint);
 			model.addAttribute("endPoint", intEndPoint);

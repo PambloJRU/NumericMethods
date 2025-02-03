@@ -1,11 +1,19 @@
 package com.numericTr2.calculator.methods;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.matheclipse.core.eval.EvalUtilities;
 
+import com.numericTr2.models.SecantIteration;
+
 public class SecantMethod {
+	
+	private double root=0;
 
-
-	public double secantMethod(String function,double A, double B) {
+	public List<SecantIteration> secantMethod(String function,double A, double B) {
+		
+		List<SecantIteration> iterations = new ArrayList<>();
 		
 	    double tolerance = 1e-11;
 	    int maxIterations = 100;
@@ -31,6 +39,8 @@ public class SecantMethod {
         xr = xi - (fxi * (xi_1 - xi) / (fxi_1 - fxi));
             
         fxr = evaluateFunction(function, xr, util); 
+        
+        iterations.add(new SecantIteration(i, xi_1, xi, xr, fxi_1, fxi, fxr));
         	
         	System.out.println(i);
         if (Math.abs(fxr) < tolerance || Math.abs(xi - xi_1) < tolerance) {
@@ -44,7 +54,8 @@ public class SecantMethod {
         fxi = fxr;
         
       }  
-        return xr;
+        root = xr;
+        return iterations;
 	}
 	
 	private double evaluateFunction(String function, double x, EvalUtilities util) {
@@ -54,6 +65,10 @@ public class SecantMethod {
 	    } catch (Exception e) {
 	        throw new RuntimeException("Error al evaluar la función en x = " + x, e);
 	    }
+	}
+	
+	public double getRoot() {
+		return root;
 	}
 	
 

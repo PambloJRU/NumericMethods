@@ -90,6 +90,30 @@
         <p>Función ingresada: <span th:utext="'$$' + ${function} + '$$'"></span> </p>
         <p>Entre:<span th:text="${startPoint}"></span> y <span th:text="${endPoint}"></span></p>
 
+		<table class="table" th:if="${iterations != null and !iterations.empty}">
+	    	<thead>
+                <tr>
+                    <th>Iteración</th>
+                    <th>Xi-1</th>
+                    <th>Xi</th>
+					<th>Xi+1</th>
+					<th>f(xi-1)</th>
+					<th>f(xi)</th>
+					<th>f(xi+1)</th>
+                </tr>
+	        </thead>
+			<tbody>
+                <tr th:each="iteration : ${iterations}">
+                    <td th:text="${iteration.iteration}"></td>
+                    <td th:text="${#numbers.formatDecimal(iteration.xi_1, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+                    <td th:text="${#numbers.formatDecimal(iteration.xi, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iteration.xr, 1, 15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iteration.fxi_1, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iteration.fxi, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+					<td th:text="${#numbers.formatDecimal(iteration.fxr, 1,15).replaceAll('0*$', '').replaceAll(',0*$', '')}"></td>
+                </tr>
+            </tbody>
+		</table>
 		
         <script> 
             fetchRandomImage();

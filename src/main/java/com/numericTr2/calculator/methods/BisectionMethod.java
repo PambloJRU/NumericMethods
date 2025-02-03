@@ -1,21 +1,29 @@
 package com.numericTr2.calculator.methods;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.matheclipse.core.eval.EvalUtilities;
 
+import com.numericTr2.models.BisectionIteration;
+import com.numericTr2.models.FalseRuleIteration;
+
 
 public class BisectionMethod {
+	
+	private double root=0;
+	
 	
 	public BisectionMethod() {
 		
 	}
 	
-	public double bisectionMethods(String function,double A, double B) {
+	public List<BisectionIteration> BisectionMethods(String function,double A, double B){
 		
 	    double tolerance = 1e-11;
 	    int maxIterations = 100;
-		
+	    List<BisectionIteration> iterations = new ArrayList<>();
+	
         EvalUtilities util = new EvalUtilities(false, true);
         
         double xr=0;
@@ -35,10 +43,11 @@ public class BisectionMethod {
         for(int i=0;i<maxIterations;i++){
         	
         xr = (xi+xu)/2;
-            
+           
         fxr = evaluateFunction(function, xr, util); 
+        
+        iterations.add(new BisectionIteration(i, xi, xu, xr));
         	
-        	System.out.println(i);
         if (Math.abs(fxr) < tolerance || Math.abs(xu - xi) < tolerance) {
             System.out.println("Convergencia alcanzada en iteración: " + i);
             break;
@@ -52,7 +61,8 @@ public class BisectionMethod {
             fxi = fxr;
         }
       }  
-        return xr;
+        root = xr;
+        return iterations;
 	}
 	
 	private double evaluateFunction(String function, double x, EvalUtilities util) {
@@ -62,6 +72,10 @@ public class BisectionMethod {
 	    } catch (Exception e) {
 	        throw new RuntimeException("Error al evaluar la función en x = " + x, e);
 	    }
+	}
+	
+	public double getRoot() {
+		return root;
 	}
 	
 }
