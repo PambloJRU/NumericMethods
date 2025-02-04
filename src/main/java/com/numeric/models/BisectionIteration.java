@@ -1,4 +1,4 @@
-package com.numericTr2.models;
+package com.numeric.models;
 
 public class BisectionIteration {
 

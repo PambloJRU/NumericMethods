@@ -1,10 +1,11 @@
-package com.numericTr2.calculator.methods;
+package com.numeric.calculator.methods;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.matheclipse.core.eval.EvalUtilities;
 import org.matheclipse.core.interfaces.IExpr;
-import com.numericTr2.models.NewtonRaphsonIteration;
+
+import com.numeric.models.NewtonRaphsonIteration;
 
 public class NewtonRaphsonMethod {
 	

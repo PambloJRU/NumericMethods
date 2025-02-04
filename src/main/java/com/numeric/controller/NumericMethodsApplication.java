@@ -1,13 +1,13 @@
-package com.numericTry2.controller;
+package com.numeric.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NumericMethodsTry2Application {
+public class NumericMethodsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NumericMethodsTry2Application.class, args);
+		SpringApplication.run(NumericMethodsApplication.class, args);
 	}
 
 }

@@ -1,11 +1,11 @@
-package com.numericTr2.calculator.methods;
+package com.numeric.calculator.methods;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.matheclipse.core.eval.EvalUtilities;
 
-import com.numericTr2.models.SecantIteration;
+import com.numeric.models.SecantIteration;
 
 public class SecantMethod {
 	

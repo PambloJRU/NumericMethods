@@ -1,4 +1,4 @@
-package com.numericTr2.calculator.methods;
+package com.numeric.calculator.methods;
 
 import org.matheclipse.core.eval.EvalUtilities;
 import org.matheclipse.core.interfaces.IExpr;

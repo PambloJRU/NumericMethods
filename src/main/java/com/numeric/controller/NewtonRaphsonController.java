@@ -1,23 +1,21 @@
-package com.numericTry2.controller;
+package com.numeric.controller;
 
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.numericTr2.calculator.methods.BisectionMethod;
-import com.numericTr2.calculator.methods.FalseRuleMethod;
-import com.numericTr2.calculator.methods.GaussianQuadrature;
-import com.numericTr2.calculator.methods.NewtonRaphsonMethod;
-import com.numericTr2.calculator.methods.SecantMethod;
-import com.numericTr2.models.BisectionIteration;
-import com.numericTr2.models.FalseRuleIteration;
-import com.numericTr2.models.NewtonRaphsonIteration;
-import com.numericTr2.models.SecantIteration;
+import com.numeric.calculator.methods.BisectionMethod;
+import com.numeric.calculator.methods.FalseRuleMethod;
+import com.numeric.calculator.methods.GaussianQuadrature;
+import com.numeric.calculator.methods.NewtonRaphsonMethod;
+import com.numeric.calculator.methods.SecantMethod;
+import com.numeric.models.BisectionIteration;
+import com.numeric.models.FalseRuleIteration;
+import com.numeric.models.NewtonRaphsonIteration;
+import com.numeric.models.SecantIteration;
 
 
 

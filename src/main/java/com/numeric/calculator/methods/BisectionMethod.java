@@ -1,12 +1,10 @@
-package com.numericTr2.calculator.methods;
+package com.numeric.calculator.methods;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.matheclipse.core.eval.EvalUtilities;
+import com.numeric.models.BisectionIteration;
 
-import com.numericTr2.models.BisectionIteration;
-import com.numericTr2.models.FalseRuleIteration;
 
 
 public class BisectionMethod {

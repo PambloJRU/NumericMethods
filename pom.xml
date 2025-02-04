@@ -8,10 +8,10 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.numericTry2</groupId>
-	<artifactId>NumericMethodsTry2</artifactId>
+	<groupId>com.numeric</groupId>
+	<artifactId>NumericMethods</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>NumericMethodsTry2</name>
+	<name>NumericMethods</name>
 	<description>Prueba 2 de la mica de metodos numericos</description>
 	<url/>
 	<licenses>
