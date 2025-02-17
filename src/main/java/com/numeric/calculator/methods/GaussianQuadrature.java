@@ -10,7 +10,8 @@ public class GaussianQuadrature {
     public GaussianQuadrature(){}
     
     //a: limite inferior, b: limite superior
- public void threePounds(String function, double a, double b){
+ @SuppressWarnings("deprecation")
+public void threePounds(String function, double a, double b){
            
      double w2 = 0.8888888;
      double w1 = 0.5555555;

@@ -8,44 +8,7 @@
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
 
-    <script>
-
-    async function fetchRandomImage() {
-        try {
-            // Configura los headers necesarios para la autenticación
-            const headers = new Headers({
-            'Accept': 'application/json',
-            // Si tienes credenciales de API, agrégalas aquí
-            // 'Authorization': 'Basic ' + btoa('username:api_key')
-         });
-
-            const response = await fetch("https://danbooru.donmai.us/posts/random.json?tags=honkai:_star_rail", {
-                //"is:sfw" cat_girl
-                //"+rating:safe"
-            method: 'GET',
-            headers: headers,
-            credentials: 'omit' // o 'include' si tienes credenciales
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                const imageUrl = data.file_url;
-                if (imageUrl) {
-                    const imageElement = document.getElementById("random-image");
-                    imageElement.src = imageUrl;
-                    imageElement.style.display = "block";
-                
-                    // Espera un momento para asegurarse de que la imagen se muestre
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                }
-            }
-        
-        } catch (error) {
-        console.error("Error:", error);
-        alert("Error al cargar la imagen: " + error.message);
-    }
-    }
-    </script>
+     <script th:src="@{/js/function.js}"></script>
 
 </head>
 <body>
