@@ -28,10 +28,10 @@ public class FalseRuleMethod {
         double fxi= evaluateFunction(function, xi, util);
         double fxu= evaluateFunction(function, xu, util);
         
-        System.out.println(fxi);
-        System.out.println(fxu);
-        System.out.println(function);
-        //Prubea de logica en java, si me da pereza, toca hacerlo en javascript :V
+        //System.out.println(fxi);
+        //System.out.println(fxu);
+        //System.out.println(function);
+        //Prubea de logica en java
         if (fxi * fxu >= 0) {
             throw new IllegalArgumentException("No cumple el teorema de fxi*fxu>= 0");
         }

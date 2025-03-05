@@ -27,9 +27,8 @@ public class SecantMethod {
         double fxi_1= evaluateFunction(function, xi_1, util);
         double fxi= evaluateFunction(function, xi, util);
         
-        //Prubea de logica en java, si me da pereza, toca hacerlo en javascript :V
         if (fxi_1 * fxi >= 0) {
-            throw new IllegalArgumentException("No cumple el teorema de biseccion");
+            throw new IllegalArgumentException("No cumple el teorema de convergencia f(xi)*f(xu) >= 0");
         }
         
         double fxr;

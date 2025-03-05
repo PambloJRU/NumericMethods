@@ -20,6 +20,4 @@ public class BisectionIteration {
 	public double getXr() { return xr; }
 	public double getXu() { return xu; }
 	
-	
-	
 }

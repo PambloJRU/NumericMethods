@@ -31,9 +31,9 @@ public class BisectionMethod {
         double fxi= evaluateFunction(function, xi, util);
         double fxu= evaluateFunction(function, xu, util);
         
-        //Prubea de logica en java, si me da pereza, toca hacerlo en javascript :V
+        //Prubea de logica en java
         if (fxi * fxu >= 0) {
-            throw new IllegalArgumentException("No cumple el teorema de biseccion");
+            throw new IllegalArgumentException("No cumple el teorema de convergencia f(xi)*f(xu) >= 0");
         }
         
         double fxr;

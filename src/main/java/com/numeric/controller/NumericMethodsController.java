@@ -18,10 +18,8 @@ import com.numeric.models.NewtonRaphsonIteration;
 import com.numeric.models.SecantIteration;
 
 
-
-
 @Controller
-public class NewtonRaphsonController {
+public class NumericMethodsController {
 	
     @GetMapping("/")
     public String showIndex() {
@@ -190,8 +188,7 @@ public class NewtonRaphsonController {
 	}
 
 	
-	  
-	  @GetMapping("/xd")
+	  @GetMapping("/testHello")
 	  	@ResponseBody
 	  	public String index() {
 			return "Hello from Newton Raphson";

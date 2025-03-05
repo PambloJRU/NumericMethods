@@ -25,12 +25,6 @@ public void threePounds(String function, double a, double b){
      double f2=(((b-a)/2)*z2)+((a+b)/2);
      double f3=(((b-a)/2)*z3)+((a+b)/2);
      
-     //System.out.println(f1);
-     //System.out.println(f2);
-     //System.out.println(f3);
-     
-     //EvalUtilities util = new EvalUtilities(false, true);
-     
      String evalF1 = function.replace("x", "(" + f1 + ")");
      String evalF2 = function.replace("x", "(" + f2 + ")");
      String evalF3 = function.replace("x", "(" + f3 + ")");
@@ -38,10 +32,6 @@ public void threePounds(String function, double a, double b){
      IExpr f_1 = util.evaluate(evalF1);
      IExpr f_2 = util.evaluate(evalF2);
      IExpr f_3 = util.evaluate(evalF3);
-     
-     //System.out.println(f_1.toString());
-     //System.out.println(f_2.toString());
-     //System.out.println(f_3.toString());
 
      double valueF1 = f_1.isReal() ? f_1.evalDouble() : 0;
      double valueF2 = f_2.isReal() ? f_2.evalDouble() : 0;
@@ -73,10 +63,10 @@ public double fourthPounds(String function, double a, double b){
      double f3=(((b-a)/2)*z3)+((a+b)/2);
      double f4=(((b-a)/2)*z4)+((a+b)/2);
      
-    String evalF1 = function.replace("x", "(" + f1 + ")");
-    String evalF2 = function.replace("x", "(" + f2 + ")");
-    String evalF3 = function.replace("x", "(" + f3 + ")");
-    String evalF4 = function.replace("x", "(" + f4 + ")");
+     String evalF1 = function.replace("x", "(" + f1 + ")");
+     String evalF2 = function.replace("x", "(" + f2 + ")");
+     String evalF3 = function.replace("x", "(" + f3 + ")");
+     String evalF4 = function.replace("x", "(" + f4 + ")");
      
      IExpr f_1 = util.evaluate(evalF1);
      IExpr f_2 = util.evaluate(evalF2);
@@ -87,7 +77,6 @@ public double fourthPounds(String function, double a, double b){
      System.out.println(f_2.toString());
      System.out.println(f_3.toString());
 
-     
      double valueF1 = f_1.isReal() ? f_1.evalDouble() : 0;
      double valueF2 = f_2.isReal() ? f_2.evalDouble() : 0;
      double valueF3 = f_3.isReal() ? f_3.evalDouble() : 0;
